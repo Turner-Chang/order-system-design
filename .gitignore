@@ -427,3 +427,22 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# JetBrains Rider / IntelliJ IDEs
+.idea/
+*.iml
+*.sln.iml
+
+# JetBrains Rider - .NET specific
+*.DotSettings.user
+.idea.*/
+
+# Operating System files
+.DS_Store          # macOS
+Thumbs.db          # Windows
+Desktop.ini        # Windows
+$RECYCLE.BIN/      # Windows
+
+# Environment-specific config (建議)
+appsettings.Local.json
+appsettings.*.Local.json
+*.local.json
