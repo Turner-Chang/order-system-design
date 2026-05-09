@@ -27,9 +27,25 @@ namespace OrderSystem.Domain.Tests
         [Fact]
         public void Subtotal_ShouldBeUnitPriceMultiplyByQuantity()
         {
-            var item = new OrderItem(Guid.NewGuid(), 100m, 3);
+            var item = new OrderItem(Guid.NewGuid(), 100m, 3); 
 
             item.Subtotal.Should().Be(300m);
+        }
+
+        [Fact]
+        public void Constructor_WithProductIdIsEmpty_ShouldThrow()
+        {
+            //Arrange
+            var productId = Guid.Empty;
+            var unitPrice = 100m;
+            var quantity = 2;
+
+            //Act
+            var act = () => new OrderItem(productId, unitPrice, quantity);
+
+            //Assert
+            act.Should().Throw<ArgumentException>();
+
         }
 
         [Theory]
@@ -41,5 +57,7 @@ namespace OrderSystem.Domain.Tests
 
             act.Should().Throw<ArgumentException>();
         }
+
+
     }
 }
