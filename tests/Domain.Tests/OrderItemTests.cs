@@ -58,6 +58,31 @@ namespace OrderSystem.Domain.Tests
             act.Should().Throw<ArgumentException>();
         }
 
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        [InlineData(-100)]
+        public void Constructor_WithNonPositiveUnitPrice_ShouldThrow(decimal invalidUnitPrice)
+        {
+            var act = () => new OrderItem(Guid.NewGuid(), invalidUnitPrice, 2);
+
+            act.Should().Throw<ArgumentException>();
+        }
+
+        [Fact]
+        public void Subtotal_WithLargeValues_ShouldCalculateCorrectly()
+        {
+            // Arrange
+            var unitPrice = 1_000_000m;
+            var quantity = 1000;
+
+            // Act
+            var item = new OrderItem(Guid.NewGuid(), unitPrice, quantity);
+
+            // Assert
+            item.Subtotal.Should().Be(1_000_000_000m);
+        }
+
 
     }
 }
