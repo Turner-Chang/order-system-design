@@ -42,7 +42,7 @@ public class OrderTests
         var order = Order.Create();
         
         // Act
-        var act = () => order.AddItem(null);
+        var act = () => order.AddItem(null!);
         
         // Assert
         act.Should().Throw<ArgumentNullException>();

@@ -6,6 +6,7 @@ namespace OrderSystem.Domain
 {
     public class OrderItem
     {
+        public Guid Id { get; private set; }
         public Guid ProductId { get; private set; }
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
@@ -26,6 +27,7 @@ namespace OrderSystem.Domain
                 throw new ArgumentException("數量必須大於0");
             }
                 
+            Id = Guid.NewGuid();
             ProductId = productId;
             UnitPrice = unitPrice;
             Quantity = quantity;

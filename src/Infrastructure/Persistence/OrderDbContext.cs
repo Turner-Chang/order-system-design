@@ -20,9 +20,11 @@ namespace OrderSystem.Infrastructure.Persistence
         }
 
         // EF Core 強制樣板：OnModelCreating override 簽章
+        // Day 4.3 拆檔策略：所有 Entity 設定走 IEntityTypeConfiguration<T> 分檔（Configurations/ 資料夾），
+        // OnModelCreating 永遠就這一行。加新 Entity 時只要再加一個 Configuration 檔，這裡不用改。
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrderDbContext).Assembly);
         }
     }
 }
