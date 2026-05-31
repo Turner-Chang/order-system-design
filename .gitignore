@@ -446,3 +446,9 @@ $RECYCLE.BIN/      # Windows
 appsettings.Local.json
 appsettings.*.Local.json
 *.local.json
+
+#db
+*.db
+order.db
+order.db-*
+.fuse_hidden*

@@ -108,6 +108,7 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
         builder.HasOne<Order>()
                .WithMany(o => o.Items)
                .HasForeignKey("OrderId")
+               .IsRequired()
                .OnDelete(DeleteBehavior.Cascade);
     }
 }
